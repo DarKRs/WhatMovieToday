@@ -8,6 +8,6 @@ namespace WhatMovieToday.AnswerBase
 {
     class Answers
     {
-        List<string> Hello = {"Здраствуй","Привет"
+       
     }
 }

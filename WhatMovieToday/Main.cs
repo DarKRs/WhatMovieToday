@@ -15,6 +15,8 @@ namespace WhatMovieToday
         public Main()
         {
             InitializeComponent();
+            AnswerBase.ParserFromTxt.Parse();
         }
+
     }
 }

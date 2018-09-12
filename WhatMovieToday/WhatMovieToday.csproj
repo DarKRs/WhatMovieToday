@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswerBase\Answers.cs" />
+    <Compile Include="AnswerBase\ParserFromTxt.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resourse\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnswerBase\answer_databse.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
