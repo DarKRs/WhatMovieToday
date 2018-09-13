@@ -22,7 +22,7 @@ namespace WhatMovieToday.AnswerBase
 
             string file = reader.ReadToEnd();
             string[] All = file.Split('\n');
-            for (int i = 0; i < All.Length; i++)
+            for (int i = 0; i < All.Length -1; i++)
             {
                 string[] QuestionAnswer = All[i].Split('\\');
                 AddToDictionary(ABCAnswer, QuestionAnswer);
@@ -80,6 +80,7 @@ namespace WhatMovieToday.AnswerBase
             }
         }
 
+
         static public void Write(string QuestionAnswer)
         {
            
@@ -94,6 +95,11 @@ namespace WhatMovieToday.AnswerBase
 
         }
 
+        static public void Delete(string QuestionAnswer)
+        {
+            File.WriteAllLines(path, File.ReadAllLines(path).Where(v => v.Trim().IndexOf(QuestionAnswer) == -1).ToArray() , Encoding.UTF8);
 
+
+        }
     }
 }

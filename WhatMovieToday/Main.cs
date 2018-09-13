@@ -19,25 +19,38 @@ namespace WhatMovieToday
             InitializeComponent();
             AnswerBase.WorkerForTxt.Parse(AnswerBase.Answers.ABCAnswer);
 
-            ChatBox.Text += "Доброго времени суток. Я бот который поможет вам подобрать фильм. Чтобы начать общение напишите что-либо. \n\n";
+            ChatBox.Text += "Доброго времени суток. Я бот который поможет вам подобрать фильм. Чтобы начать общение напишите что-либо. \n";
         }
 
-        private void ChatBox_KeyPress(object sender, KeyEventArgs e)
+
+        private void Send_Click(object sender, EventArgs e)
         {
+            Answer();
+        }
+
+        private void SendBox_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (SendBox.Text == "") { return; }
             if (e.KeyCode == Keys.Enter)
             {
-                if (ChatBox.Lines[ChatBox.Lines.Length - 1] == "") { return; }
-                //MessageBox.Show("Нажали <ENTER>");
-                if(ChatBox.Lines[ChatBox.Lines.Length-1].Contains("!"))
-                {
-                    ChatBox.Text += "\n" + AnswerBase.Answers.ExecuteCommand(ChatBox.Lines[ChatBox.Lines.Length - 4], ChatBox.Lines[ChatBox.Lines.Length-1]);
-                    ChatBox.SelectionStart = ChatBox.Text.Length;
-                    return;
-                }
-                Thread.Sleep(rnd.Next(100,500));
-                ChatBox.Text += "\n" + AnswerBase.Answers.GenerateAnswer(ChatBox.Lines[ChatBox.Lines.Length-1]) + "\n";
-                ChatBox.SelectionStart = ChatBox.Text.Length;
+                Answer();
+                SendBox.Text = "";
             }
+        }
+
+
+        private void Answer()
+        {
+            ChatBox.Text += "\n Вы:" + SendBox.Text + "\n";
+            if (SendBox.Text[0] == '!')
+            {
+                ChatBox.Text += "\n" + AnswerBase.Answers.ExecuteCommand(SendBox.Text);
+                ChatBox.SelectionStart = ChatBox.Text.Length;
+                return;
+            }
+            Thread.Sleep(rnd.Next(100, 500));
+            ChatBox.Text += "\n" + AnswerBase.Answers.GenerateAnswer(SendBox.Text) + "\n";
+            ChatBox.SelectionStart = ChatBox.Text.Length;
         }
     }
 }

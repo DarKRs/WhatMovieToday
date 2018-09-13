@@ -39,6 +39,8 @@
             this.FilmList = new System.Windows.Forms.RichTextBox();
             this.GenreList = new System.Windows.Forms.RichTextBox();
             this.ChatBox = new System.Windows.Forms.RichTextBox();
+            this.SendBox = new System.Windows.Forms.TextBox();
+            this.Send = new System.Windows.Forms.Button();
             this.UpperMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +102,7 @@
             this.FilmList.Location = new System.Drawing.Point(18, 27);
             this.FilmList.Name = "FilmList";
             this.FilmList.ReadOnly = true;
-            this.FilmList.Size = new System.Drawing.Size(571, 199);
+            this.FilmList.Size = new System.Drawing.Size(571, 165);
             this.FilmList.TabIndex = 0;
             this.FilmList.Text = "";
             // 
@@ -109,7 +111,7 @@
             this.GenreList.Location = new System.Drawing.Point(595, 27);
             this.GenreList.Name = "GenreList";
             this.GenreList.ReadOnly = true;
-            this.GenreList.Size = new System.Drawing.Size(389, 199);
+            this.GenreList.Size = new System.Drawing.Size(389, 165);
             this.GenreList.TabIndex = 1;
             this.GenreList.Text = "";
             // 
@@ -117,18 +119,38 @@
             // 
             this.ChatBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChatBox.Location = new System.Drawing.Point(18, 232);
+            this.ChatBox.Location = new System.Drawing.Point(18, 198);
             this.ChatBox.Name = "ChatBox";
-            this.ChatBox.Size = new System.Drawing.Size(966, 120);
+            this.ChatBox.ReadOnly = true;
+            this.ChatBox.Size = new System.Drawing.Size(966, 134);
             this.ChatBox.TabIndex = 2;
             this.ChatBox.Text = "";
-            this.ChatBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChatBox_KeyPress);
+            // 
+            // SendBox
+            // 
+            this.SendBox.Location = new System.Drawing.Point(18, 338);
+            this.SendBox.Name = "SendBox";
+            this.SendBox.Size = new System.Drawing.Size(842, 20);
+            this.SendBox.TabIndex = 3;
+            this.SendBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SendBox_KeyPress);
+            // 
+            // Send
+            // 
+            this.Send.Location = new System.Drawing.Point(866, 338);
+            this.Send.Name = "Send";
+            this.Send.Size = new System.Drawing.Size(118, 23);
+            this.Send.TabIndex = 4;
+            this.Send.Text = "Отправить";
+            this.Send.UseVisualStyleBackColor = true;
+            this.Send.Click += new System.EventHandler(this.Send_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 370);
+            this.Controls.Add(this.Send);
+            this.Controls.Add(this.SendBox);
             this.Controls.Add(this.ChatBox);
             this.Controls.Add(this.GenreList);
             this.Controls.Add(this.UpperMenu);
@@ -157,6 +179,8 @@
         private System.Windows.Forms.RichTextBox FilmList;
         private System.Windows.Forms.RichTextBox GenreList;
         private System.Windows.Forms.RichTextBox ChatBox;
+        private System.Windows.Forms.TextBox SendBox;
+        private System.Windows.Forms.Button Send;
     }
 }
 
