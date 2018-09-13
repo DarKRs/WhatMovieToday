@@ -17,7 +17,7 @@ namespace WhatMovieToday
         public Main()
         {
             InitializeComponent();
-            AnswerBase.ParserFromTxt.Parse();
+            AnswerBase.WorkerForTxt.Parse(AnswerBase.Answers.ABCAnswer);
 
             ChatBox.Text += "Доброго времени суток. Я бот который поможет вам подобрать фильм. Чтобы начать общение напишите что-либо. \n\n";
         }
@@ -28,9 +28,14 @@ namespace WhatMovieToday
             {
                 if (ChatBox.Lines[ChatBox.Lines.Length - 1] == "") { return; }
                 //MessageBox.Show("Нажали <ENTER>");
-                
+                if(ChatBox.Lines[ChatBox.Lines.Length-1].Contains("!"))
+                {
+                    ChatBox.Text += "\n" + AnswerBase.Answers.ExecuteCommand(ChatBox.Lines[ChatBox.Lines.Length - 4], ChatBox.Lines[ChatBox.Lines.Length-1]);
+                    ChatBox.SelectionStart = ChatBox.Text.Length;
+                    return;
+                }
                 Thread.Sleep(rnd.Next(100,500));
-                ChatBox.Text += "\n" + AnswerBase.ParserFromTxt.GenerateAnswer(ChatBox.Lines[ChatBox.Lines.Length-1]) + "\n";
+                ChatBox.Text += "\n" + AnswerBase.Answers.GenerateAnswer(ChatBox.Lines[ChatBox.Lines.Length-1]) + "\n";
                 ChatBox.SelectionStart = ChatBox.Text.Length;
             }
         }

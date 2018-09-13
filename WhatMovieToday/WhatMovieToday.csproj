@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnswerBase\Answers.cs" />
-    <Compile Include="AnswerBase\ParserFromTxt.cs" />
+    <Compile Include="AnswerBase\WorkerForTxt.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
